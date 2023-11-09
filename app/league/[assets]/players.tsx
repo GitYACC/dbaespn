@@ -84,13 +84,13 @@ export default function Players() {
                             <Combobox.Option
                                 className="mx-4"
                                 key={item.index}
-                                value={item.first_name}
+                                value={item.first_name + " " + item.last_name}
                             >
                                 {({selected, active}) => (
                                     <div className="flex">
                                         <div className={`bg-white w-1/4 group flex gap-4 items-center ${activeCommand.index == item.index && "bg-blue-600 text-white"} hover:bg-blue-600 p-2 rounded-lg w-full`}>
                                             <>{active && setActiveCommand(item)}</>
-                                            <span className={`text-sm text-slate-900 group-hover:text-white ${activeCommand.index == item.index && "text-white"}`}>{item.first_name + " " + item.last_name}</span>
+                                            <span className={`text-sm text-gray-700 group-hover:text-white`}>{item.first_name + " " + item.last_name}</span>
                                         </div>
                                     </div>
                                 )}
@@ -101,12 +101,12 @@ export default function Players() {
                             <Combobox.Option
                                 className="mx-4"
                                 key={item.index}
-                                value={item.first_name}
+                                value={item.first_name + " " + item.last_name}
                             >
                                 {({selected, active}) => (
                                     <div className={`group flex w-fit gap-4 items-center ${activeCommand.index == item.index && "bg-blue-600 text-white"} hover:bg-blue-600 p-2 rounded-lg w-full`}>
                                         <>{active && setActiveCommand(item)}</>
-                                        <span className={`text-sm text-slate-900 group-hover:text-white ${activeCommand.index == item.index && "text-white"}`}>{item.first_name + " " + item.last_name}</span>
+                                        <span className={`text-sm text-gray-700 group-hover:text-white ${activeCommand.index == item.index && "text-white"}`}>{item.first_name + " " + item.last_name}</span>
                                     </div>
                                 )}
                             </Combobox.Option>
@@ -132,7 +132,7 @@ export default function Players() {
                                         <Badge color="indigo" variant="soft">{activeCommand.position}</Badge>
                                         <Text className="font-semibold" color="bronze">{activeCommand.first_name}</Text>
                                     </div>
-                                    <p className="text-2xl tracking-[-0.048rem] font-semibold">{activeCommand.last_name}</p>
+                                    <p className="text-2xl tracking-[-0.048rem] font-semibold text-gray-900">{activeCommand.last_name}</p>
                                 </div>
                                 <a href="#" className="group flex items-center justify-center">
                                     <Badge className="flex flex-col justify-center items-center border-[1px] border-blue-600/50 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white group-hover:cursor-pointer">
@@ -144,26 +144,26 @@ export default function Players() {
                             <div className="flex pt-2 gap-2">
                                 <div className="flex flex-col">
                                     <div className="flex gap-2">
-                                        <div className="w-20 font-semibold">Height</div>
-                                        <div className="w-24">{activeCommand.height}</div>
+                                        <div className="w-20 font-semibold text-gray-900">Height</div>
+                                        <div className="w-24 text-gray-700">{activeCommand.height}</div>
                                     </div>
                                     <div className="flex gap-2">
-                                        <div className="w-20 font-semibold">Weight</div>
-                                        <div className="w-24">{activeCommand.weight}</div>
+                                        <div className="w-20 font-semibold text-gray-900">Weight</div>
+                                        <div className="w-24 text-gray-700">{activeCommand.weight}</div>
                                     </div>
                                     <div className="flex gap-2">
-                                        <div className="w-20 font-semibold">Wingspan</div>
-                                        <div className="w-24">{activeCommand.wingspan}</div>
+                                        <div className="w-20 font-semibold text-gray-900">Wingspan</div>
+                                        <div className="w-24 text-gray-700">{activeCommand.wingspan}</div>
                                     </div>
                                 </div>
                                 <div className="flex flex-col">
                                     <div className="flex gap-2">
-                                        <div className="w-20 font-semibold">Vertical</div>
-                                        <div className="w-24">{activeCommand.vertical}</div>
+                                        <div className="w-20 font-semibold text-gray-900">Vertical</div>
+                                        <div className="w-24 text-gray-700">{activeCommand.vertical}</div>
                                     </div>
                                     <div className="flex gap-2">
-                                        <div className="w-20 font-semibold">Age</div>
-                                        <div className="w-24">{activeCommand.age}</div>
+                                        <div className="w-20 font-semibold text-gray-900">Age</div>
+                                        <div className="w-24 text-gray-700">{activeCommand.age}</div>
                                     </div>
                                 </div>
                             </div>

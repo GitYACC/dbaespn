@@ -1,5 +1,5 @@
 import Navbar from "../home/[assets]/navbar";
-import Players from "./assets/players";
+import Players from "./[assets]/players";
 
 export default function Home() {
     return (
