@@ -1,4 +1,3 @@
-import { Flex, Badge, Text, Theme } from "@radix-ui/themes";
 import Navbar from "./[assets]/navbar";
 import HomePage from "./[assets]/home";
 
