@@ -2,8 +2,11 @@ import {
     Flex, 
     Text
 } from "@radix-ui/themes"
-import { BasketballIcon, SearchIcon, SunIcon } from "./home-svg"
+import BasketballIcon from "@/app/context/svg/basketball2"
+import SearchIcon from "@/app/context/svg/search"
+import SunIcon from "@/app/context/svg/sun"
 import { ReactNode } from "react"
+import { signOut } from "next-auth/react"
 
 
 interface NavLinkProps {
@@ -21,7 +24,11 @@ function NavLink(props: NavLinkProps) {
     )
 }
 
-export default function Navbar() {
+interface NavbarProps {
+    user: string
+}
+
+export default function Navbar(props: NavbarProps) {
     return (
         <Flex className="border-b-gray-200/50 border-b-[1px]">
             <Flex py="4" px="4" className="items-center justify-center gap-8 w-full">
@@ -31,11 +38,12 @@ export default function Navbar() {
                 </a>
                 <NavLink>Teams</NavLink>
                 <NavLink url="/league">League</NavLink>
-                <NavLink>Season</NavLink>
+                <NavLink url="/test">Season</NavLink>
             </Flex>
             <Flex py="4" px="4" direction="row-reverse" className="w-full justify-end items-center gap-8">
+                <button onClick={() => signOut({redirect: false})} className="font-md text-sm py-2 px-2 border-[1px] border-red-100 rounded-md bg-red-100/25 hover:border-red-200 hover:bg-red-100/50">Sign Out</button>
                 <button className="py-2 px-2 border-[1px] border-blue-100 rounded-md bg-blue-100/25 hover:border-blue-200 hover:bg-blue-100/50">
-                    <SunIcon className="w-4 h-4" />
+                    <SunIcon className="w-5 h-5" />
                 </button>
                 <div className="flex items-center border-[1px] rounded-md bg-white">
                     <div className="px-2">
@@ -43,6 +51,7 @@ export default function Navbar() {
                     </div>
                     <input placeholder="Search" className="font-md text-sm outline-none ring-none my-2 w-[20rem]" />
                 </div>
+                <div>{props.user}</div>
             </Flex>
         </Flex>
     )

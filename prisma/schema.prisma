@@ -1,0 +1,65 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgres://yacc:!1Hantanu@dba.cdtf5jejiifm.us-west-1.rds.amazonaws.com:5432/postgreDBA"
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model games_2024 {
+  date      DateTime @db.Date
+  team      String   @db.VarChar
+  player    String   @db.VarChar
+  points    Int      @default(0)
+  rebounds  Int      @default(0)
+  assists   Int      @default(0)
+  blocks    Int      @default(0)
+  steals    Int      @default(0)
+  fga       Int      @default(0)
+  fgm       Int      @default(0)
+  fta       Int      @default(0)
+  ftm       Int      @default(0)
+  turnovers Int      @default(0)
+  fouls     Int      @default(0)
+  id        Int      @id(map: "games_2024_pk") @default(autoincrement())
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model season_2024 {
+  date  DateTime @db.Date
+  teams String[] @db.VarChar
+  score Int[]
+  id    Int      @id(map: "season_2024_pk") @default(autoincrement())
+
+  @@ignore
+}
+
+model stats {
+  id         Int     @id(map: "stats_pk") @default(autoincrement())
+  height     String  @db.VarChar
+  weight     Int
+  vertical   Decimal @db.Decimal
+  wingspan   String  @db.VarChar
+  age        Int
+  overall    Int     @default(50)
+  defending  Int     @default(50)
+  finishing  Int     @default(50)
+  iq         Int     @default(50)
+  passing    Int     @default(50)
+  speed      Int     @default(50)
+  rebounding Int     @default(50)
+  shooting   Int     @default(50)
+  handling   Int     @default(50)
+}
+
+model users {
+  id       Int     @id(map: "users_pk") @default(autoincrement())
+  user     String  @db.VarChar
+  name     String  @db.VarChar
+  password String  @db.VarChar
+  admin    Boolean @default(false)
+}

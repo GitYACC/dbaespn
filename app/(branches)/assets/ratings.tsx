@@ -1,7 +1,8 @@
 import { Flex } from "@radix-ui/themes";
 import { Dispatch, ReactNode, SetStateAction, useState } from "react";
-import { Combobox } from '@headlessui/react'
-import { CheckIcon, XMark } from "./home-svg";
+import { Combobox, Transition } from '@headlessui/react'
+import CheckIcon from "@/app/context/svg/check";
+import XMark from "@/app/context/svg/x";
 
 const players = [
     "Bhardwaj T.",
@@ -38,6 +39,7 @@ function TaggedInput(props: TaggedInputProps) {
             </div>
             <input 
                 className="w-full pl-3 outline-none"
+                maxLength={2}
                 placeholder={props.placeholder}
                 onKeyDown={(event) => !(isNumeric(event.key) || event.key == "Backspace") && event.preventDefault()}
                 onChange={(event) => {
@@ -84,8 +86,15 @@ export default function RatingsForm() {
                         <span className="text-gray-400 text-sm">{Math.trunc(overall / 8)}</span>
                     </Flex>
                 </Flex>
-                
-                <Combobox.Options className="flex flex-col rounded-lg absolute ring-1 ring-gray-300 top-12 bg-white overflow-scroll h-[9rem] w-full">
+                <Transition
+                    enter="transition-all"
+                    enterFrom="-translate-y-1 opacity-0"
+                    enterTo="translate-y-0 opacity-1"
+                    leave="ease"
+                    leaveFrom="translate-y-0 opacity-1"
+                    leaveTo="-translate-y-1 opacity-0"
+                >
+                <Combobox.Options className="flex flex-col rounded-lg absolute ring-1 top-2 ring-gray-300 bg-white overflow-scroll h-[9rem] w-full">
                     {filteredPlayers.length == 0 && query != "" ? (
                         <div className="flex w-full h-full items-center justify-center">
                             <div className="flex flex-col items-center justify-center gap-2">
@@ -94,7 +103,7 @@ export default function RatingsForm() {
                             </div>
                         </div>
                     ) : (filteredPlayers.map((person) => (
-                        <Combobox.Option className={({active}) => `py-[0.4rem] flex items-center ${active && "bg-blue-700 text-white cursor-pointer"}`} key={person} value={person}>
+                        <Combobox.Option className={({active}) => `py-[0.4rem] flex items-center ${active && "bg-blue-700 text-white cursor-pointer"} text-gray-900 text-sm`} key={person} value={person}>
                             {({selected, active}) => (
                                 <>
                                     <CheckIcon className={`w-4 h-4 ${active ? "stroke-white" : "stroke-gray-900"} mx-4 ${!selected && "invisible"}`}></CheckIcon>
@@ -104,6 +113,7 @@ export default function RatingsForm() {
                         </Combobox.Option>
                     )))}
                 </Combobox.Options>
+                </Transition>
             </Combobox>
             <div className="mt-10 text-gray-700 text-sm">Rank each category from 50-99</div>
             <div className="flex flex-col rounded-lg ring-1 ring-gray-300 mt-2 overflow-hidden divide-y">

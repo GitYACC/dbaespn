@@ -48,7 +48,7 @@ export default function HomePage() {
                         <Header>League Leaders</Header>
                         <div className="text-gray-700 text-sm mt-2">League leaders are listed as <Strong>Top 5</Strong> in their respective categories</div>
                     </div>
-                    <div className="flex mt-10 rounded-lg text-sm ring-1 ring-gray-300 w-full h-[20rem] overflow-scroll no-scrollbar">
+                    <div className="mt-10 rounded-lg text-sm ring-1 ring-gray-300 w-full h-[20rem] overflow-scroll no-scrollbar">
                         <table className="divide-y divide-gray-300 border-separate border-spacing-0 w-full h-fit">
                             <thead className="font-semibold sticky top-0 bg-white">
                                 <tr>

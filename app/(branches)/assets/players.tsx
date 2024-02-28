@@ -19,7 +19,15 @@ function player(
     vertical: string,
     age: string,
     number: string,
-    photo: string
+    photo: string,
+    defending: number,
+    finishing: number,
+    iq: number,
+    passing: number,
+    speed: number,
+    rebounding: number,
+    shooting: number,
+    handling: number
 ) {
     return {
         index: idx,
@@ -34,28 +42,39 @@ function player(
         vertical: vertical,
         age: age,
         number: number,
-        photo: photo
+        photo: photo,
+        defending: defending,
+        finishing: finishing,
+        iq: iq,
+        passing: passing,
+        speed: speed,
+        rebounding: rebounding,
+        shooting: shooting,
+        handling: handling
     }
 }
 
 const test = [
-    player(1, "Samarth",    "Shastry",      "/logo.png",    "PG | SG",  "96",   "5'9",  "115 lbs", "5'10.5",    "26'", "19", "1",   "/portrait.png"),
-    player(2, "Bhardwaj",   "Tallapragada", "/logo.png",    "PG | SG",  "99",   "5'10", "140 lbs", "5'10",      "23'", "19", "8",   "/portrait.png"),
-    player(3, "Pranav",     "Garigapatti",  "/logo.png",    "PF",       "71",   "5'10", "160 lbs", "5'8",       "20'", "19", "2",   "/portrait.png"),
-    player(4, "Jayanth",    "Jaisankar",    "/logo.png",    "PF | C",   "95",   "6'2",  "170 lbs", "6'2",       "23'", "19", "3",   "/portrait.png"),
-    player(5, "Rohil",      "Khare",        "/logo.png",    "SF",       "95",   "5'8",  "160 lbs", "5'8",       "20'", "19", "4",   "/portrait.png"),
-    player(6, "Harun",      "Momin",        "/logo.png",    "PF | C",   "78",   "6'4",  "165 lbs", "6'8",       "18'", "19", "5",   "/portrait.png"),
-    player(7, "Sai",        "Balakumar",    "/logo.png",    "PF",       "87",   "5'9",  "210 lbs", "5'9",       "18'", "19", "7",   "/portrait.png"),
-    player(8, "Kaif",       "Jeelani",      "/logo.png",    "PF | C",   "83",   "5'11", "170 lbs", "5'8",       "20'", "19", "6",   "/portrait.png"),
-    player(9, "Keenan",     "Kalra",        "/logo.png",    "SG",       "61",   "5'7",  "130 lbs", "5'6",       "20'", "19", "9",   "/portrait.png"),
-    player(10, "Srijan",    "Kagitam",      "/logo.png",    "SG",       "88",   "5'10", "140 lbs", "5'10",      "26'", "19", "10",  "/portrait.png"),
-    player(11, "Tanish",    "Baranwal",     "/logo.png",    "PF",       "95",   "6'2",  "160 lbs", "6'2",       "23'", "19", "30",  "/portrait.png"),
-    player(12, "Shaan",     "Berar",        "/logo.png",    "PF | C",   "90",   "6'3",  "200 lbs", "6'3",       "18'", "19", "11",  "/portrait.png"),
-    player(13, "Sunaad",    "Shastry",      "/logo.png",    "SG",       "80",   "5'10", "125 lbs", "5'9",       "24'", "19", "12",  "/portrait.png"),
-    player(14, "Pavan",     "Unknown",      "/logo.png",    "SG",       "71",   "5'8",  "115 lbs", "5'8",       "22'", "19", "13",  "/portrait.png"),
-    player(15, "Ranjit",    "Unknown",      "/logo.png",    "C",        "99",   "6'4",  "200 lbs", "6'4",       "20'", "19", "14",  "/portrait.png"),
-    player(16, "Sam",       "Unknown",      "/logo.png",    "SF",       "91",   "5'8",  "140 lbs", "5'8",       "26'", "19", "15",  "/portrait.png")
+    player(1, "Samarth",    "Shastry",      "/warriors.png",    "PG | SG",  "96",   "5'9",  "115 lbs", "5'11",      "26'", "19", "1",   "/portrait.png", 90, 92, 78, 75, 97, 92, 94, 75),
+    player(2, "Bhardwaj",   "Tallapragada", "/cavaliers.png",   "PG | SG",  "99",   "5'10", "140 lbs", "5'10",      "23'", "19", "8",   "/portrait.png", 92, 92, 88, 95, 95, 90, 95, 95),
+    player(3, "Pranav",     "Garigapatti",  "/lakers.png",      "PF",       "71",   "5'10", "160 lbs", "5'8",       "20'", "19", "2",   "/portrait.png", 82, 60, 70, 60, 75, 70, 80, 70),
+    player(4, "Jayanth",    "Jaisankar",    "/celtics.png",     "PF | C",   "95",   "6'2",  "170 lbs", "6'2",       "23'", "19", "3",   "/portrait.png", 88, 92, 95, 95, 88, 90, 85, 85),
+    player(5, "Rohil",      "Khare",        "/warriors.png",    "SF",       "95",   "5'8",  "160 lbs", "5'8",       "20'", "19", "4",   "/portrait.png", 99, 99, 99, 99, 99, 99, 99, 99),
+    player(6, "Harun",      "Momin",        "/cavaliers.png",   "PF | C",   "78",   "6'4",  "165 lbs", "6'6",       "18'", "19", "5",   "/portrait.png", 99, 99, 99, 99, 99, 99, 99, 99),
+    player(7, "Sai",        "Balakumar",    "/lakers.png",      "PF",       "87",   "5'9",  "210 lbs", "5'9",       "18'", "19", "7",   "/portrait.png", 99, 99, 99, 99, 99, 99, 99, 99),
+    player(8, "Kaif",       "Jeelani",      "/celtics.png",     "PF | C",   "83",   "5'11", "170 lbs", "5'8",       "20'", "19", "6",   "/portrait.png", 99, 99, 99, 99, 99, 99, 99, 99),
+    player(9, "Keenan",     "Kalra",        "/warriors.png",    "SG",       "61",   "5'7",  "130 lbs", "5'6",       "20'", "19", "9",   "/portrait.png", 99, 99, 99, 99, 99, 99, 99, 99),
+    player(10, "Srijan",    "Kagitam",      "/cavaliers.png",   "SG",       "88",   "5'10", "140 lbs", "5'10",      "26'", "19", "10",  "/portrait.png", 99, 99, 99, 99, 99, 99, 99, 99),
+    player(11, "Tanish",    "Baranwal",     "/lakers.png",      "PF",       "95",   "6'2",  "160 lbs", "6'2",       "23'", "19", "30",  "/portrait.png", 99, 99, 99, 99, 99, 99, 99, 99),
+    player(12, "Shaan",     "Berar",        "/celtics.png",     "PF | C",   "90",   "6'3",  "200 lbs", "6'3",       "18'", "19", "11",  "/portrait.png", 99, 99, 99, 99, 99, 99, 99, 99),
+    player(13, "Sunaad",    "Shastry",      "/warriors.png",    "SG",       "80",   "5'10", "125 lbs", "5'9",       "24'", "19", "12",  "/portrait.png", 99, 99, 99, 99, 99, 99, 99, 99),
+    player(14, "Pavan",     "Unknown",      "/cavaliers.png",   "SG",       "71",   "5'8",  "115 lbs", "5'8",       "22'", "19", "13",  "/portrait.png", 99, 99, 99, 99, 99, 99, 99, 99),
+    player(15, "Ranjit",    "Unknown",      "/lakers.png",      "C",        "99",   "6'4",  "200 lbs", "6'4",       "20'", "19", "14",  "/portrait.png", 99, 99, 99, 99, 99, 99, 99, 99),
+    player(16, "Sam",       "Unknown",      "/celtics.png",     "SF",       "91",   "5'8",  "140 lbs", "5'8",       "26'", "19", "15",  "/portrait.png", 99, 99, 99, 99, 99, 99, 99, 99),
+    player(17, "Hritesh",   "Pushpajara",   "/warriors.png",    "PG",       "91",   "5'11", "140 lbs", "6'2",       "24'", "19", "16",  "/portrait.png", 99, 99, 99, 99, 99, 99, 99, 99)
 ]
+
+
 
 export default function Players() {
     const [selectedItem, setSelectedItem] = useState(test[0])
@@ -77,45 +96,78 @@ export default function Players() {
         <Combobox className="bg-white divide-y rounded-lg shadow-md border-[1px] w-[70rem]" as="div" value={selectedItem} onChange={setSelectedItem}>
             {activeCommand != undefined ? (
             <div className='flex flex-col-reverse divide-y-reverse divide-y'>
-                <Combobox.Options static className="overflow-scroll no-scrollbar h-[25rem] py-1 bg-white mt-2">
+                <Combobox.Options static className="h-[25rem] w-full bg-white">
                     <>{query.length != 0 && filteredItems.length == 0 && setActiveCommand(undefined)}</>
-                    {query.length == 0 ? (
-                        test.map((item) => (
-                            <Combobox.Option
-                                className="mx-4"
-                                key={item.index}
-                                value={item.first_name + " " + item.last_name}
-                            >
-                                {({selected, active}) => (
-                                    <div className="flex">
-                                        <div className={`bg-white w-1/4 group flex gap-4 items-center ${activeCommand.index == item.index && "bg-blue-600 text-white"} hover:bg-blue-600 p-2 rounded-lg w-full`}>
-                                            <>{active && setActiveCommand(item)}</>
-                                            <span className={`text-sm text-gray-700 group-hover:text-white`}>{item.first_name + " " + item.last_name}</span>
-                                        </div>
-                                    </div>
-                                )}
-                            </Combobox.Option>
-                        ))
-                    ) : (
-                        filteredItems.map((item) => (
-                            <Combobox.Option
-                                className="mx-4"
-                                key={item.index}
-                                value={item.first_name + " " + item.last_name}
-                            >
-                                {({selected, active}) => (
-                                    <div className={`group flex w-fit gap-4 items-center ${activeCommand.index == item.index && "bg-blue-600 text-white"} hover:bg-blue-600 p-2 rounded-lg w-full`}>
-                                        <>{active && setActiveCommand(item)}</>
-                                        <span className={`text-sm text-gray-700 group-hover:text-white ${activeCommand.index == item.index && "text-white"}`}>{item.first_name + " " + item.last_name}</span>
-                                    </div>
-                                )}
-                            </Combobox.Option>
-                        ))
-                    )}
+                    <div className="text-sm w-full h-full overflow-scroll no-scrollbar">
+                    <table className="divide-y divide-gray-300 border-spacing-0 w-[70rem] overflow-scroll">
+                        <thead>
+                            <tr className="font-semibold">
+                                <td className={`text-gray-900 pl-8 pr-48 py-[0.875rem] text-left sticky top-0 left-0 z-10 bg-gray-200`}>Player</td>
+                                {["Defending", "Finishing", "IQ", "Passing", "Speed", "Rebounding", "Shooting", "Handling"].map((header) => (
+                                    <td 
+                                        className={`sticky top-0 bg-gray-100 px-12 transition-all hover:text-blue-400 hover:cursor-pointer`}
+                                        onClick={() => console.log("Hello")}
+                                    >
+                                        {header}
+                                    </td>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody className="divide-y">
+                        {query.length == 0 ? (
+                            test.map((item) => (
+                                <tr>
+                                    <td className="sticky left-0 bg-gray-100">
+                                    <Combobox.Option
+                                        key={item.index}
+                                        value={item.first_name + " " + item.last_name}
+                                    >
+                                        {({selected, active}) => (
+                                            <div className={`text-gray-900 group w-full border-r pl-6 pr-12 text-left ${active && "hover:text-blue-400 hover:cursor-pointer"}`}>
+                                                <div className={`bg-gray-100 gap-4 p-2 w-full`}>
+                                                    <>{active && setActiveCommand(item)}</>
+                                                    <span className={`text-sm text-gray-900 group-hover:text-blue-400`}>{item.first_name + " " + item.last_name}</span>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </Combobox.Option>
+                                    </td>
+                                    {["Defending", "Finishing", "IQ", "Passing", "Speed", "Rebounding", "Shooting", "Handling"].map((header: string) => (
+                                        <td className="text-center p-2">{item[header.toLowerCase()]}</td>
+                                    ))}
+                                </tr>
+                            ))
+                        ) : (
+                            filteredItems.map((item) => (
+                                <tr>
+                                    <td className="sticky left-0 bg-gray-100">
+                                    <Combobox.Option
+                                        key={item.index}
+                                        value={item.first_name + " " + item.last_name}
+                                    >
+                                        {({selected, active}) => (
+                                            <div className={`text-gray-900 group w-full border-r pl-6 pr-12 text-left ${active && "hover:text-blue-400 hover:cursor-pointer"}`}>
+                                                <div className={`w-full gap-4 p-2 bg-gray-100`}>
+                                                    <>{active && setActiveCommand(item)}</>
+                                                    <span className={`text-sm text-gray-900 group-hover:text-blue-400`}>{item.first_name + " " + item.last_name}</span>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </Combobox.Option>
+                                    </td>
+                                    {["Defending", "Finishing", "IQ", "Passing", "Speed", "Rebounding", "Shooting", "Handling"].map((header: string) => (
+                                        <td className="text-center p-2">{item[header.toLowerCase()]}</td>
+                                    ))}
+                                </tr>
+                            ))
+                        )}
+                    </tbody>
+                    </table>
+                    </div>
                 </Combobox.Options>
                 <div className='flex w-full mt-5 gap-5'>
                     <div className='flex flex-col h-[10rem] w-[13rem] ml-5'>
-                        <div className="relative flex w-full h-full justify-center items-end overflow-hidden">
+                        <div className="relative flex w-full h-full justify-center items-end overflow-hidden border-x-[1px] border-t-[1px] border-x-gray-300 border-t-gray-300 rounded-t-lg">
                             <Badge className="absolute bottom-2 right-2 z-10" size="2" color="indigo" variant="solid">#{activeCommand.number}</Badge>
                             <Image src={activeCommand.photo} alt="PFP" width={1080} height={1080} className="h-full w-full rounded-lg z-[4]" />
                             <div className="absolute -right-20 border-[1px] -skew-y-[60deg] top-0 w-56 h-[25rem] opacity-50 shadow-2xl bg-white z-[4]"></div>
@@ -130,12 +182,12 @@ export default function Players() {
                                 <div>
                                     <div className="flex gap-2">
                                         <Badge color="indigo" variant="soft">{activeCommand.position}</Badge>
-                                        <Text className="font-semibold" color="bronze">{activeCommand.first_name}</Text>
+                                        <Text className="font-semibold text-gray-900">{activeCommand.first_name}</Text>
                                     </div>
                                     <p className="text-2xl tracking-[-0.048rem] font-semibold text-gray-900">{activeCommand.last_name}</p>
                                 </div>
                                 <a href="#" className="group flex items-center justify-center">
-                                    <Badge className="flex flex-col justify-center items-center border-[1px] border-blue-600/50 group-hover:border-blue-600 group-hover:bg-blue-600 group-hover:text-white group-hover:cursor-pointer">
+                                    <Badge className="flex flex-col justify-center items-center border-[1px] border-blue-600/50 group-hover:cursor-pointer">
                                         <div>OVR</div>
                                         <div>{activeCommand.overall}</div>
                                     </Badge>
@@ -171,26 +223,26 @@ export default function Players() {
                     </div>
                     <div className="flex justify-center items-center w-[40%]">
                         <div className="flex flex-col overflow-hidden border-[1px] rounded-lg divide-y">
-                            <div className="flex items-center justify-center bg-[#fdb927] font-bold">2023 Season Stats</div>
+                            <div className="flex items-center justify-center py-1 text-gray-900 font-bold">2023 Season Stats</div>
                             <div className="flex gap-7 px-6 py-2">
                                 <div className="flex flex-col justify-center items-center">
                                     <div className="text-xs text-gray-400">PTS</div>
-                                    <div className="font-bold text-2xl">33.8</div>
+                                    <div className="font-bold text-2xl text-gray-900">33.8</div>
                                     <div className="text-xs text-gray-400">1st</div>
                                 </div>
                                 <div className="flex flex-col justify-center items-center">
                                     <div className="text-xs text-gray-400">REB</div>
-                                    <div className="font-bold text-2xl">10.2</div>
+                                    <div className="font-bold text-2xl text-gray-900">10.2</div>
                                     <div className="text-xs text-gray-400">2nd</div>
                                 </div>
                                 <div className="flex flex-col justify-center items-center">
                                     <div className="text-xs text-gray-400">AST</div>
-                                    <div className="font-bold text-2xl">11.1</div>
+                                    <div className="font-bold text-2xl text-gray-900">11.1</div>
                                     <div className="text-xs text-gray-400">2nd</div>
                                 </div>
                                 <div className="flex flex-col justify-center items-center">
                                     <div className="text-xs text-gray-400">FG%</div>
-                                    <div className="font-bold text-2xl">52.5%</div>
+                                    <div className="font-bold text-2xl text-gray-900">52.5%</div>
                                     <div className="text-xs text-gray-400">1st</div>
                                 </div>
                             </div>

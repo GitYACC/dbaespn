@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import "@radix-ui/themes/styles.css"
 import "./globals.css"
 import { Theme } from '@radix-ui/themes'
+import NextAuthProvider from './context/NextAuthProvider'
 
 export const metadata: Metadata = {
   title: 'DBA ESPN',
@@ -16,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
         <body>
-            <Theme>
-                {children}
-            </Theme>
+            <NextAuthProvider>
+                <Theme>
+                    {children}
+                </Theme>
+            </NextAuthProvider>
         </body>
     </html>
   )
